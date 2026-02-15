@@ -32,8 +32,8 @@
   sudo su
   sudo apt update -y
   sudo apt install -y git nano wget
-  git clone https://github.com/onixsat/ubuntu.git
-  cd ubuntu
+  git clone https://github.com/onixsat/servidor.git
+  cd servidor
   bash btk.sh
  ```
 

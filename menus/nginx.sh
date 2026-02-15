@@ -20,11 +20,13 @@ getRand(){
 function cmd1(){
  
     rnd_count=$((RANDOM % ( 8089 - 8080 + 1 ) + 8080 )); ## get a random value using /dev/urandom
-	
-    php -S localhost:${rnd_count} >/dev/null 2>&1 &
-	
+	ipaddr=$(curl v4.ident.me)
+	sudo ufw allow ${rnd_count}/tcp
+	php -S ${ipaddr}:${rnd_count} >/dev/null 2>&1 &
+
     if [ $? -eq 0 ]; then
-	echo "Server (http://localhost:${rnd_count}) started"
+		echo "Server (http://${ipaddr}:${rnd_count}) started"
+		       sleep 5
        return 0
     else
         echo "failed"
@@ -115,4 +117,3 @@ function showSubmenu2(){
   reload "return" "menuNginx"
 	pause
 }
-
